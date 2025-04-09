@@ -65,19 +65,19 @@ void SaisieEtudiants(){
 //         printf("Nouvel etudiant :\n");
         
 //         int num;
-//         int numeroExiste;
+//         int numeroTrouve;
 //         do{
-//             numeroExiste = 0;
+//             numeroTrouve = 0;
 //             printf("Numero : \n"); 
 //             scanf("%d", &num);
             
 //             for(int i = 0; i < NBETU; i++){
 //                 if(VETU[i].numero == num){
 //                     printf("Ce numero existe deja pour l'etudiant %s !\n", VETU[i].nom);
-//                     numeroExiste = 1;
+//                     numeroTrouve = 1;
 //                 }
 //             }
-//         }while(numeroExiste);
+//         }while(numeroTrouve);
         
 //         VETU[NBETU].numero = num;
 //         printf("Nom : \n"); scanf("%s", VETU[NBETU].nom);
@@ -95,20 +95,20 @@ void AjouterEtudiant() {
         printf("Nouvel etudiant :\n");
         
         int num;
-        int numeroExiste;
+        int numeroTrouve;
         do {
-            numeroExiste = 0;
+            numeroTrouve = 0;
             printf("Numero : \n"); 
             scanf("%d", &num);
             
             for (int i = 0; i < NBETU; i++) {
                 if (VETU[i].numero == num) {
                     printf("Ce numero existe deja pour l'etudiant %s !\n", VETU[i].nom);
-                    numeroExiste = 1;
+                    numeroTrouve = 1;
                 }
             }
             while (getchar() != '\n');
-        } while (numeroExiste);
+        } while (numeroTrouve);
         
         VETU[NBETU].numero = num;
         

@@ -152,24 +152,6 @@ void supermatMat(SUPERMRT sm, double *m, iQt Qld, iQt Qcd) {
 
 
 iQt contiguite(SUPERMRT a) {
-    if (!a || !a->ligne || a->nl == 0 || a->nc == 0){
-        return 0;
-    }
-    
-    int ordonne = 1;
-    for (iQt i = 1; i < a->nl; i++) {
-        if (a->ligne[i] != a->ligne[i-1] + a->nc) {
-            ordonne = 0;
-            break;
-        }
-    }
-    
-    if (ordonne) return 2;
-    
-    return 0;
-} 
-
-iQt contiguite(SUPERMRT a) {
     if (!a || !a->ligne || a->nl == 0 || a->nc == 0) {
         return 0;
     }
@@ -183,8 +165,8 @@ iQt contiguite(SUPERMRT a) {
     }
     if (ordonne) return 2;
 
-    iQt adresseminimale = a->ligne[0];
-    iQt adressemaximale = a->ligne[0] + a->nc;
+    double* adresseminimale = a->ligne[0];
+    double* adressemaximale = a->ligne[0] + a->nc;
     for (iQt i = 1; i < a->nl; i++) {
         if (a->ligne[i] < adresseminimale) adresseminimale = a->ligne[i];
         if (a->ligne[i] + a->nc > adressemaximale) adressemaximale = a->ligne[i] + a->nc;

@@ -95,6 +95,9 @@ int main() {
     
     printf("Test de contiguite\n\n");
     printf("Contiguite de a: %d\n", contiguite(a));
+    printf("Contiguite de b: %d\n", contiguite(b));
+    printf("Contiguite de c: %d\n", contiguite(c));
+    printf("Contiguite de sousmatrice: %d\n", contiguite(sous));
     printf("Contiguite de sm: %d\n", contiguite(sm));
     
     rendreSupermat(a);

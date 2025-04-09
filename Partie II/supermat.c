@@ -8,7 +8,7 @@ SUPERMRT allouerSupermat(iQt Ql, iQt Qc) {
         return NULL;
     }
     
-    SUPERMRT sm = (SUPERMRT)malloc(sizeof(SuperMatrixDescriptor));
+    SUPERMRT sm = (SUPERMRT)malloc(sizeof(SuperMatriceDescripter));
     if (!sm){
         return NULL;
     }
@@ -25,7 +25,9 @@ SUPERMRT allouerSupermat(iQt Ql, iQt Qc) {
     for (iQt i = 0; i < Ql; i++) {
         sm->ligne[i] = (double*)malloc(Qc * sizeof(double));
         if (!sm->ligne[i]) {
-            for (iQt j = 0; j < i; j++) free(sm->ligne[j]);
+            for (iQt j = 0; j < i; j++){
+                free(sm->ligne[j]);
+            }
             free(sm->ligne);
             free(sm);
             return NULL;
@@ -84,7 +86,7 @@ SUPERMRT sousMatrice(SUPERMRT a, iQt L1, iQt L2, iQt c1, iQt c2) {
     iQt nl = L2 - L1 + 1;
     iQt nc = c2 - c1 + 1;
     
-    SUPERMRT sm = (SUPERMRT)malloc(sizeof(SuperMatrixDescriptor));
+    SUPERMRT sm = (SUPERMRT)malloc(sizeof(SuperMatriceDescripter));
     if (!sm){
         return NULL;
     }
@@ -112,7 +114,7 @@ SUPERMRT matSupermat(double *m, iQt Qld, iQt Qcd, iQt Qle, iQt Qce) {
         return NULL;
     }
     
-    SUPERMRT sm = (SUPERMRT)malloc(sizeof(SuperMatrixDescriptor));
+    SUPERMRT sm = (SUPERMRT)malloc(sizeof(SuperMatriceDescripter));
     if (!sm){
         return NULL;
     }
@@ -150,7 +152,9 @@ void supermatMat(SUPERMRT sm, double *m, iQt Qld, iQt Qcd) {
 
 
 iQt contiguite(SUPERMRT a) {
-    if (!a || !a->ligne || a->nl == 0 || a->nc == 0) return 0;
+    if (!a || !a->ligne || a->nl == 0 || a->nc == 0){
+        return 0;
+    }
     
     int ordonne = 1;
     for (iQt i = 1; i < a->nl; i++) {

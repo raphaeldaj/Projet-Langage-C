@@ -7,9 +7,9 @@ typedef struct {
     iQt nl;
     iQt nc;
     double** ligne;
-} SuperMatrixDescriptor;
+} SuperMatriceDescripter;
 
-typedef SuperMatrixDescriptor* SUPERMRT;
+typedef SuperMatriceDescripter* SUPERMRT;
 
 SUPERMRT allouerSupermat(iQt Ql, iQt Qc);
 #define acces(a, i, j) ((a)->ligne[i][j])

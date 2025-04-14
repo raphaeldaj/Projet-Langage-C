@@ -37,7 +37,6 @@ void SaisieEtudiants() {
     if (NBETU < MAX) {
         printf("Nouvel etudiant :\n");
         
-        // Saisie et vérification du numéro (inchangé)
         int num;
         int numeroTrouve;
         do {

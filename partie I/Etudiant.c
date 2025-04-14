@@ -90,6 +90,8 @@ void SupprimerEtudiant(int num) {
         }
         NBETU--;
         ChainageParMerite();
+    }else{
+        printf("ce numero d'etudiant n'a pas ete trouve \n\n");
     }
 }
 

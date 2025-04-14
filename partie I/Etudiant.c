@@ -19,11 +19,11 @@ void ChainageParMerite(){
             DEB = i;
         }else{
             if(VETU[i].note >= VETU[DEB].note){
-                SUIVANT[i] = DEB;
+                SUIVANT[i] = DEB; // dans notre exmple SUIVANT[3]=deb :5 et deb vaut maintenant 3
                 DEB = i;
             }else{
                 int j = DEB;
-                while (SUIVANT[j] != -1 && VETU[i].note < VETU[SUIVANT[j]].note) {
+                while (SUIVANT[j] != -1 && VETU[i].note < VETU[SUIVANT[j]].note) { //(SUIVANT[j] != -1 && VETU[7].note < VETU[SUIVANT[j]].note)
                     j = SUIVANT[j];
                 }
                 SUIVANT[i] = SUIVANT[j];
@@ -34,63 +34,6 @@ void ChainageParMerite(){
 }
 
 void SaisieEtudiants(){
-    printf("Nombre d'etudiants (<=100) : ");
-    scanf("%d", &NBETU);
-    for(int i = 0; i < NBETU; i++){
-        printf("Etudiant %d:\n", i+1);
-        printf("Numero : ");
-        scanf("%d", &VETU[i].numero);
-        printf("Nom : ");
-        scanf("%s", VETU[i].nom);
-        printf("Note : ");
-        scanf("%f", &VETU[i].note);
-    }
-}
-
-// void AjouterEtudiant() {
-//     if (NBETU < MAX) {
-//         printf("Nouvel etudiant :\n");
-//         printf("Numero : "); scanf("%d", &VETU[NBETU].numero);
-//         printf("Nom : "); scanf("%s", VETU[NBETU].nom);
-//         printf("Note : "); scanf("%f", &VETU[NBETU].note);
-//         NBETU++;
-//         ChainageParMerite();
-//     } else {
-//         printf("Capacite maximale atteinte !\n");
-//     }
-// }
-
-// void AjouterEtudiant(){
-//     if(NBETU < MAX){
-//         printf("Nouvel etudiant :\n");
-        
-//         int num;
-//         int numeroTrouve;
-//         do{
-//             numeroTrouve = 0;
-//             printf("Numero : \n"); 
-//             scanf("%d", &num);
-            
-//             for(int i = 0; i < NBETU; i++){
-//                 if(VETU[i].numero == num){
-//                     printf("Ce numero existe deja pour l'etudiant %s !\n", VETU[i].nom);
-//                     numeroTrouve = 1;
-//                 }
-//             }
-//         }while(numeroTrouve);
-        
-//         VETU[NBETU].numero = num;
-//         printf("Nom : \n"); scanf("%s", VETU[NBETU].nom);
-//         printf("Note : \n"); scanf("%f", &VETU[NBETU].note);
-//         NBETU++;
-//         ChainageParMerite();
-//         printf("Etudiant ajoute avec succes !\n");
-//     }else{
-//         printf("Capacite maximale atteinte !\n");
-//     }
-// }
-
-void AjouterEtudiant() {
     if (NBETU < MAX) {
         printf("Nouvel etudiant :\n");
         
@@ -120,12 +63,16 @@ void AjouterEtudiant() {
         scanf("%f", &VETU[NBETU].note);
         while (getchar() != '\n');
         
-        NBETU++;
-        ChainageParMerite();
         printf("Etudiant ajoute avec succes !\n");
     } else {
         printf("Capacite maximale atteinte !\n");
     }
+}
+
+void AjouterEtudiant() {
+    SaisieEtudiants();
+    NBETU++;
+    ChainageParMerite();
 }
 
 void SupprimerEtudiant(int num) {
@@ -211,7 +158,7 @@ void AfficherParAleatoire() {
 
     srand(time(NULL));
     for (int i = NBETU-1; i > 0; i--) {
-        int j = rand() % (i+1);
+        int j = rand() % (i+1);//j vaut le reste de la division du nombre aleatoire aves i+1 j sera donc compris entre  0 et i 
         int temp = indices[i];
         indices[i] = indices[j];
         indices[j] = temp;

@@ -24,6 +24,7 @@ SUPERMRT allouerSupermat(iQt Ql, iQt Qc) {
     
     for (iQt i = 0; i < Ql; i++) {
         sm->ligne[i] = (double*)malloc(Qc * sizeof(double));
+
         if (!sm->ligne[i]) {
             for (iQt j = 0; j < i; j++){
                 free(sm->ligne[j]);
@@ -82,6 +83,7 @@ SUPERMRT sousMatrice(SUPERMRT a, iQt L1, iQt L2, iQt c1, iQt c2) {
     if (!a || L1 < 0 || L2 >= a->nl || c1 < 0 || c2 >= a->nc || L1 > L2 || c1 > c2){
         return NULL;
     }
+
     
     iQt nl = L2 - L1 + 1;
     iQt nc = c2 - c1 + 1;
@@ -99,7 +101,7 @@ SUPERMRT sousMatrice(SUPERMRT a, iQt L1, iQt L2, iQt c1, iQt c2) {
         free(sm);
         return NULL;
     }
-    
+
     for (iQt i = 0; i < nl; i++) {
         sm->ligne[i] = a->ligne[L1 + i] + c1;
     }
@@ -127,9 +129,10 @@ SUPERMRT matSupermat(double *m, iQt Qld, iQt Qcd, iQt Qle, iQt Qce) {
         free(sm);
         return NULL;
     }
+
     
-    for (iQt i = 0; i < Qle; i++) {
-        sm->ligne[i] = m + i * Qcd;
+    for (iQt i = 0; i < Qle; i++){
+        sm->ligne[i] = m + (i * Qcd);
     }
     
     return sm;
@@ -163,13 +166,19 @@ iQt contiguite(SUPERMRT a) {
             break;
         }
     }
-    if (ordonne) return 2;
+    if (ordonne){
+        return 2;
+    }
 
-    double* adresseminimale = a->ligne[0];
-    double* adressemaximale = a->ligne[0] + a->nc;
+    double* adresseminimale = a->ligne[0]; // debut de ligne[0]
+    double* adressemaximale = a->ligne[0] + a->nc;// fin de ligne[0]
     for (iQt i = 1; i < a->nl; i++) {
-        if (a->ligne[i] < adresseminimale) adresseminimale = a->ligne[i];
-        if (a->ligne[i] + a->nc > adressemaximale) adressemaximale = a->ligne[i] + a->nc;
+        if (a->ligne[i] < adresseminimale){
+            adresseminimale = a->ligne[i];
+        }
+        if (a->ligne[i] + a->nc > adressemaximale){
+            adressemaximale = a->ligne[i] + a->nc;
+        }
     }
 
     if ((adressemaximale - adresseminimale) == a->nl * a->nc) {

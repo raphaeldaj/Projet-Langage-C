@@ -170,8 +170,8 @@ iQt contiguite(SUPERMRT a) {
         return 2;
     }
 
-    double* adresseminimale = a->ligne[0]; // debut de ligne[0]
-    double* adressemaximale = a->ligne[0] + a->nc;// fin de ligne[0]
+    double* adresseminimale = a->ligne[0];
+    double* adressemaximale = a->ligne[0] + a->nc;/
     for (iQt i = 1; i < a->nl; i++) {
         if (a->ligne[i] < adresseminimale){
             adresseminimale = a->ligne[i];

@@ -98,7 +98,7 @@ int main() {
     printf("Contiguite de b: %d\n", contiguite(b));
     printf("Contiguite de c: %d\n", contiguite(c));
     printf("Contiguite de sousmatrice: %d\n", contiguite(sous));
-    printf("Contiguite de sm: %d\n", contiguite(sm));
+    printf("Contiguite de sm matrice issue de matSupermat : %d\n", contiguite(sm));
     
     rendreSupermat(a);
     rendreSupermat(b);

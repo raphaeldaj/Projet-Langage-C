@@ -117,12 +117,12 @@ void Restaurer(){
 void AfficherParMerite(){
     printf("\n=== Classement par merite ===\n \n");
     int i = DEB;
-    printf(" ----------------------------------------- -------------- \n");
+    printf(" ----------- ----------------------------------------- -------------- \n");
     while(i != -1){
-        printf("|%40s |(Note: %2.2f) |\n", VETU[i].nom, VETU[i].note);
+        printf("| Num: %4d |%40s |(Note: %2.2f) |\n",VETU[i].numero, VETU[i].nom, VETU[i].note);
         i = SUIVANT[i];
     }
-    printf(" ----------------------------------------- -------------- \n");
+    printf(" ----------- ----------------------------------------- -------------- \n");
 }
 
 void AfficherParAlpha(){
@@ -142,11 +142,11 @@ void AfficherParAlpha(){
     }
 
     printf("\n=== Ordre alphabetique ===\n \n");
-    printf(" ----------------------------------------- -------------- \n");
+    printf(" ----------- ----------------------------------------- -------------- \n");
     for (int i = 0; i < NBETU; i++) {
-        printf("|%40s |(Note: %2.2f) |\n", etudiantTries[i].nom, etudiantTries[i].note);
+        printf("| Num: %4d |%40s |(Note: %2.2f) |\n",etudiantTries[i].numero, etudiantTries[i].nom, etudiantTries[i].note);
     }
-    printf(" ----------------------------------------- -------------- \n");
+    printf(" ----------- ----------------------------------------- -------------- \n");
 }
 
 void AfficherParAleatoire() {
@@ -165,9 +165,9 @@ void AfficherParAleatoire() {
     }
 
     printf("\n=== Ordre aleatoire ===\n \n");
-    printf(" ----------------------------------------- -------------- \n");
+    printf(" ----------- ----------------------------------------- -------------- \n");
     for (int i = 0; i < NBETU; i++) {
-        printf("|%40s |(Note: %2.2f) |\n", VETU[indices[i]].nom, VETU[indices[i]].note);
+        printf("| Num: %4d |%40s |(Note: %2.2f) |\n",VETU[indices[i]].numero, VETU[indices[i]].nom, VETU[indices[i]].note);
     }
-    printf(" ----------------------------------------- -------------- \n");
+    printf(" ----------- ----------------------------------------- -------------- \n");
 }

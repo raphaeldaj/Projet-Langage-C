@@ -33,10 +33,11 @@ void ChainageParMerite(){
     }
 }
 
-void SaisieEtudiants(){
+void SaisieEtudiants() {
     if (NBETU < MAX) {
         printf("Nouvel etudiant :\n");
         
+        // Saisie et vérification du numéro (inchangé)
         int num;
         int numeroTrouve;
         do {
@@ -59,9 +60,22 @@ void SaisieEtudiants(){
         fgets(VETU[NBETU].nom, sizeof(VETU[NBETU].nom), stdin);
         VETU[NBETU].nom[strcspn(VETU[NBETU].nom, "\n")] = '\0';
         
-        printf("Note : \n");
-        scanf("%f", &VETU[NBETU].note);
-        while (getchar() != '\n');
+        float note;
+        int noteValide;
+        do {
+            noteValide = 1;
+            printf("Note (entre 0 et 20) : \n");
+            scanf("%f", &note);
+            
+            if (note < 0 || note > 20) {
+                printf("Erreur : La note doit etre comprise entre 0 et 20.\n");
+                noteValide = 0;
+            }
+            
+            while (getchar() != '\n');
+        } while (!noteValide);
+        
+        VETU[NBETU].note = note;
         
         printf("Etudiant ajoute avec succes !\n");
     } else {
